@@ -1,44 +1,44 @@
-import { test, expect } from '@playwright/test';
+import { test } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
+import { InventoryPage } from '../pages/InventoryPage';
+import { CartPage } from '../pages/CartPage';
+import { CheckoutPage } from '../pages/CheckoutPage';
 
 test('user can complete checkout successfully', async ({ page }) => {
   const loginPage = new LoginPage(page);
+  const inventoryPage = new InventoryPage(page);
+  const cartPage = new CartPage(page);
+  const checkoutPage = new CheckoutPage(page);
 
   await loginPage.goto();
   await loginPage.login('standard_user', 'secret_sauce');
 
-  await expect(page).toHaveURL(/inventory/);
+  await inventoryPage.addBackpackToCart();
+  await inventoryPage.goToCart();
 
-  await page.locator('[data-test="add-to-cart-sauce-labs-backpack"]').click();
-  await page.locator('.shopping_cart_link').click();
+  await cartPage.clickCheckout();
 
-  await expect(page.getByText('Sauce Labs Backpack')).toBeVisible();
+  await checkoutPage.fillCheckoutInformation('Diana', 'Jimenez', '60610');
+  await checkoutPage.clickContinue();
+  await checkoutPage.clickFinish();
 
-  await page.getByRole('button', { name: 'Checkout' }).click();
-
-  await page.getByPlaceholder('First Name').fill('Diana');
-  await page.getByPlaceholder('Last Name').fill('Jimenez');
-  await page.getByPlaceholder('Zip/Postal Code').fill('60610');
-
-  await page.getByRole('button', { name: 'Continue' }).click();
-  await page.getByRole('button', { name: 'Finish' }).click();
-
-  await expect(page.getByText('Thank you for your order!')).toBeVisible();
+  await checkoutPage.assertOrderComplete();
 });
 
 test('checkout shows error when information is missing', async ({ page }) => {
   const loginPage = new LoginPage(page);
+  const inventoryPage = new InventoryPage(page);
+  const cartPage = new CartPage(page);
+  const checkoutPage = new CheckoutPage(page);
 
   await loginPage.goto();
   await loginPage.login('standard_user', 'secret_sauce');
 
-  await expect(page).toHaveURL(/inventory/);
+  await inventoryPage.addBackpackToCart();
+  await inventoryPage.goToCart();
 
-  await page.locator('[data-test="add-to-cart-sauce-labs-backpack"]').click();
-  await page.locator('.shopping_cart_link').click();
+  await cartPage.clickCheckout();
+  await checkoutPage.clickContinue();
 
-  await page.getByRole('button', { name: 'Checkout' }).click();
-  await page.getByRole('button', { name: 'Continue' }).click();
-
-  await expect(page.getByText(/Error:/i)).toBeVisible();
+  await checkoutPage.assertCheckoutErrorVisible();
 });

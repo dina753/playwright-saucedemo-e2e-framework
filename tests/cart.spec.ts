@@ -1,30 +1,32 @@
-import { test, expect } from '@playwright/test';
+import { test } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
+import { InventoryPage } from '../pages/InventoryPage';
+import { CartPage } from '../pages/CartPage';
 
 test('user can add product to cart', async ({ page }) => {
   const loginPage = new LoginPage(page);
+  const inventoryPage = new InventoryPage(page);
+  const cartPage = new CartPage(page);
 
   await loginPage.goto();
   await loginPage.login('standard_user', 'secret_sauce');
 
-  await expect(page).toHaveURL(/inventory/);
+  await inventoryPage.addBackpackToCart();
+  await inventoryPage.goToCart();
 
-  await page.locator('[data-test="add-to-cart-sauce-labs-backpack"]').click();
-  await page.locator('.shopping_cart_link').click();
-
-  await expect(page.getByText('Sauce Labs Backpack')).toBeVisible();
+  await cartPage.assertProductVisible('Sauce Labs Backpack');
 });
 
 test('user can remove product from cart', async ({ page }) => {
   const loginPage = new LoginPage(page);
+  const inventoryPage = new InventoryPage(page);
+  const cartPage = new CartPage(page);
 
   await loginPage.goto();
   await loginPage.login('standard_user', 'secret_sauce');
 
-  await expect(page).toHaveURL(/inventory/);
+  await inventoryPage.addBackpackToCart();
+  await inventoryPage.goToCart();
 
-  await page.locator('[data-test="add-to-cart-sauce-labs-backpack"]').click();
-  await page.locator('[data-test="remove-sauce-labs-backpack"]').click();
-
-  await expect(page.locator('.shopping_cart_badge')).toHaveCount(0);
+  await cartPage.removeBackpack();
 });
