@@ -33,6 +33,23 @@ Inventory: add product to cart
 Cart: remove product, navigate to checkout  
 Checkout: successful checkout, validation errors  
 
+## How to Run
+
+Install dependencies:
+npm install
+
+Install Playwright browsers:
+npx playwright install
+
+Run tests:
+npx playwright test
+
+Run tests in UI mode:
+npx playwright test --ui
+
+Open report:
+npx playwright show-report
+
 ## Architecture
 This framework follows the Page Object Model (POM) design pattern, where each page has its own class, making tests clean, reusable, and easy to scale.
 
