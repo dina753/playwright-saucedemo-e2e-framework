@@ -13,16 +13,16 @@ End-to-end test automation framework built with Playwright and TypeScript using 
 ## Project Structure
 playwright-saucedemo-e2e-framework/
 ├── pages/
-│   ├── LoginPage.ts
-│   ├── InventoryPage.ts
-│   ├── CartPage.ts
-│   └── CheckoutPage.ts
+│ ├── LoginPage.ts
+│ ├── InventoryPage.ts
+│ ├── CartPage.ts
+│ └── CheckoutPage.ts
 ├── tests/
-│   ├── auth.spec.ts
-│   ├── cart.spec.ts
-│   └── checkout.spec.ts
+│ ├── auth.spec.ts
+│ ├── cart.spec.ts
+│ └── checkout.spec.ts
 ├── .github/workflows/
-│   └── playwright.yml
+│ └── playwright.yml
 ├── playwright.config.ts
 ├── package.json
 └── README.md
