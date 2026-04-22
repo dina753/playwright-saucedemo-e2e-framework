@@ -28,14 +28,15 @@ playwright-saucedemo-e2e-framework/
 └── README.md
 
 ## Test Coverage
-Authentication: valid login, invalid login  
-Inventory: add product to cart  
-Cart: remove product, navigate to checkout  
-Checkout: successful checkout, validation errors  
+- Authentication: valid login, invalid login  
+- Inventory: add product to cart  
+- Cart: remove product, navigate to checkout  
+- Checkout: successful checkout, validation errors  
 
 ## How to Run
 
 Install dependencies:
+```bash
 npm install
 
 Install Playwright browsers:
@@ -50,37 +51,47 @@ npx playwright test --ui
 Open report:
 npx playwright show-report
 
-## Architecture
+Architecture
+
 This framework follows the Page Object Model (POM) design pattern, where each page has its own class, making tests clean, reusable, and easy to scale.
 
-## How to Run
-Install dependencies:
-npm install
+CI/CD
 
-Run tests:
-npx playwright test
-
-Run tests in UI mode:
-npx playwright test --ui
-
-Open report:
-npx playwright show-report
-
-## CI/CD
 Tests run automatically on every push using GitHub Actions.
 
-## Key Features
-- Playwright + TypeScript
-- Page Object Model (POM)
-- Multi-browser support
-- CI/CD integration
-- Clean and scalable structure
+Key Features
+Playwright + TypeScript
+Page Object Model (POM)
+Multi-browser support
+CI/CD integration
+Clean and scalable structure
+Future Improvements
+Data-driven testing
+API testing
+Visual regression testing
+Custom reporting
+Author
 
-## Future Improvements
-- Data-driven testing
-- API testing
-- Visual regression testing
-- Custom reporting
+Diana JimenezArchitecture
 
-## Author
+This framework follows the Page Object Model (POM) design pattern, where each page has its own class, making tests clean, reusable, and easy to scale.
+
+CI/CD
+
+Tests run automatically on every push using GitHub Actions.
+
+Key Features
+Playwright + TypeScript
+Page Object Model (POM)
+Multi-browser support
+CI/CD integration
+Clean and scalable structure
+Future Improvements
+Data-driven testing
+API testing
+Visual regression testing
+Custom reporting
+Author
+
 Diana Jimenez
+
