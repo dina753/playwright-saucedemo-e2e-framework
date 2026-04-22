@@ -13,30 +13,29 @@ End-to-end test automation framework built with Playwright and TypeScript using 
 ## Project Structure
 playwright-saucedemo-e2e-framework/
 ├── pages/
-│ ├── LoginPage.ts
-│ ├── InventoryPage.ts
-│ ├── CartPage.ts
-│ └── CheckoutPage.ts
+│   ├── LoginPage.ts
+│   ├── InventoryPage.ts
+│   ├── CartPage.ts
+│   └── CheckoutPage.ts
 ├── tests/
-│ ├── auth.spec.ts
-│ ├── cart.spec.ts
-│ └── checkout.spec.ts
+│   ├── auth.spec.ts
+│   ├── cart.spec.ts
+│   └── checkout.spec.ts
 ├── .github/workflows/
-│ └── playwright.yml
+│   └── playwright.yml
 ├── playwright.config.ts
 ├── package.json
 └── README.md
 
 ## Test Coverage
-- Authentication: valid login, invalid login  
-- Inventory: add product to cart  
-- Cart: remove product, navigate to checkout  
-- Checkout: successful checkout, validation errors  
+- Authentication: valid login, invalid login
+- Inventory: add product to cart
+- Cart: remove product, navigate to checkout
+- Checkout: successful checkout, validation errors
 
 ## How to Run
 
 Install dependencies:
-```bash
 npm install
 
 Install Playwright browsers:
@@ -51,47 +50,24 @@ npx playwright test --ui
 Open report:
 npx playwright show-report
 
-Architecture
-
+## Architecture
 This framework follows the Page Object Model (POM) design pattern, where each page has its own class, making tests clean, reusable, and easy to scale.
 
-CI/CD
-
+## CI/CD
 Tests run automatically on every push using GitHub Actions.
 
-Key Features
-Playwright + TypeScript
-Page Object Model (POM)
-Multi-browser support
-CI/CD integration
-Clean and scalable structure
-Future Improvements
-Data-driven testing
-API testing
-Visual regression testing
-Custom reporting
-Author
+## Key Features
+- Playwright + TypeScript
+- Page Object Model (POM)
+- Multi-browser support
+- CI/CD integration
+- Clean and scalable structure
 
-Diana JimenezArchitecture
+## Future Improvements
+- Data-driven testing
+- API testing
+- Visual regression testing
+- Custom reporting
 
-This framework follows the Page Object Model (POM) design pattern, where each page has its own class, making tests clean, reusable, and easy to scale.
-
-CI/CD
-
-Tests run automatically on every push using GitHub Actions.
-
-Key Features
-Playwright + TypeScript
-Page Object Model (POM)
-Multi-browser support
-CI/CD integration
-Clean and scalable structure
-Future Improvements
-Data-driven testing
-API testing
-Visual regression testing
-Custom reporting
-Author
-
+## Author
 Diana Jimenez
-
