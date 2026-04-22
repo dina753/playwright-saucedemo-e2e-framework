@@ -1,39 +1,42 @@
 # Playwright SauceDemo E2E Framework
 
+![Playwright Tests](https://github.com/dina753/playwright-saucedemo-e2e-framework/actions/workflows/playwright.yml/badge.svg)
+
 End-to-end test automation framework built with Playwright and TypeScript using SauceDemo as the application under test.
 
 ## Tech Stack
-
 - Playwright
 - TypeScript
 - Node.js
-- GitHub
+- GitHub Actions (CI/CD)
 
 ## Project Structure
-
-- pages/LoginPage.ts
-- tests/auth.spec.ts
-- tests/cart.spec.ts
-- tests/checkout.spec.ts
-- playwright.config.ts
-- package.json
+playwright-saucedemo-e2e-framework/
+├── pages/
+│   ├── LoginPage.ts
+│   ├── InventoryPage.ts
+│   ├── CartPage.ts
+│   └── CheckoutPage.ts
+├── tests/
+│   ├── auth.spec.ts
+│   ├── cart.spec.ts
+│   └── checkout.spec.ts
+├── .github/workflows/
+│   └── playwright.yml
+├── playwright.config.ts
+├── package.json
+└── README.md
 
 ## Test Coverage
+Authentication: valid login, invalid login  
+Inventory: add product to cart  
+Cart: remove product, navigate to checkout  
+Checkout: successful checkout, validation errors  
 
-### Authentication
-- Valid login
-- Invalid login
-
-### Cart
-- Add product to cart
-- Remove product from cart
-
-### Checkout
-- Successful checkout
-- Validation error when checkout information is missing
+## Architecture
+This framework follows the Page Object Model (POM) design pattern, where each page has its own class, making tests clean, reusable, and easy to scale.
 
 ## How to Run
-
 Install dependencies:
 npm install
 
@@ -43,20 +46,24 @@ npx playwright test
 Run tests in UI mode:
 npx playwright test --ui
 
-## Key Features
+Open report:
+npx playwright show-report
 
+## CI/CD
+Tests run automatically on every push using GitHub Actions.
+
+## Key Features
 - Playwright + TypeScript
-- Multi-browser execution
-- Page Object Model with LoginPage
-- End-to-end coverage for key SauceDemo flows
+- Page Object Model (POM)
+- Multi-browser support
+- CI/CD integration
+- Clean and scalable structure
 
 ## Future Improvements
-
-- Add InventoryPage, CartPage, and CheckoutPage
-- Re-enable GitHub Actions workflow
-- Add data-driven testing
-- Improve reporting and logging
+- Data-driven testing
+- API testing
+- Visual regression testing
+- Custom reporting
 
 ## Author
-
 Diana Jimenez
